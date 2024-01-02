@@ -1,0 +1,90 @@
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>Club Detail</title>
+	<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+</head>
+
+<body class="d-flex flex-column">
+
+	<section layout:fragment="body">
+		<header class="py-5 bg-light border-bottom mb-4">
+			<div class="container">
+				<div class="text-center my-5">
+					<h1 class="fw-bolder" th:text="${event.name}"></h1>
+					<p class="lead mb-0">Charlotte, NC</p>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="row">
+				<!-- Blog entries-->
+				<div class="col-lg-8" style="margin-left: 20%">
+					<!-- Featured blog post-->
+					<div class="card mb-4">
+						<a th:href="${event.photoUrl}"><img class="card-img-top" th:src="${event.photoUrl}" /></a>
+						<div class="card-body">
+							<div class="small text-muted" th:text="${event.createdOn}"></div>
+							<h2 class="card-title">About the Event</h2>
+							<p class="card-text" th:text="${event.type}"></p>
+							<a id="btnDelete" th:onclick="showAlert()" class="btn btn-danger" th:action="onClick" th:href="@{/events/{eventId}/delete(eventId=${event.id})}">Delete</a>
+							<div class="col-lg-4 form-control" style="margin-top:12px;">
+								<!-- Comment Widget-->
+								<form class="card mb-4 " method="post" th:action="@{/events/{eventId}/comment(eventId=${event.id})}" th:object="${comment}">
+									<div class="card-header" method="post" style="text-align: center;">Comment on the Event</div>
+										<div class="card-body">
+											<div class="input-group">
+												<input class="form-control" type="text" placeholder="Add comment..."
+													aria-label="Comment" id="comt" name="comt" field="*{comt}"  />
+												<button class="btn btn-primary" id="button-comment" type="submit">Go!</button>
+											</div>
+										</div>
+										
+									</form>
+						</div>
+						<div class="col-lg-8 form-control" style="margin-top:12px;">
+							<div class="card-mb-4">
+							<div class="card-header" style="border: 5px; text-transform: uppercase; text-align: center; border-radius: 6px;">
+								Comments
+							</div>
+							</div>
+							<div th:each="comment:${comment}" style="margin-top: 12px; border:5px; ">
+								<div style="border-radius: 50%;">
+									<table>
+										<tr>
+											<td>
+												<div th:text="${comment.username}" class="card-header"  style="background-color: rgb(151, 183, 227); color: rgb(0, 0, 0); border-radius: 8px; height:fit-content; width:fit-content; "></div>
+												
+											</td>
+
+
+										</tr>
+										<tr>
+											<td>
+												<div th:text="${comment.comt}" class="card-header" style="background-color: rgb(237, 235, 233); border-radius: 8px; height:fit-content; width:fit-content ; text-align: right; margin-top: 8px;"></div>
+											</td>
+										</tr>
+									</table>
+									
+									
+										
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+						
+				</div>
+		</div>
+
+		
+
+	</section>
+
+</body>
+
+</html>
