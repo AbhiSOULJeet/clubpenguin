@@ -44,13 +44,13 @@
 										
 									</form>
 						</div>
-						<div class="col-lg-8 form-control" style="margin-top:12px;">
+						<div class="col-lg-8 form-control" style="margin-top:12px; float:left;overflow-y: auto;height: 200px;">
 							<div class="card-mb-4">
 							<div class="card-header" style="border: 5px; text-transform: uppercase; text-align: center; border-radius: 6px;">
 								Comments
 							</div>
 							</div>
-							<div th:each="comment:${comment}" style="margin-top: 12px; border:5px; ">
+							<div th:each="comment:${comment}" style="margin-top: 12px; border:5px;  ">
 								<div style="border-radius: 50%;">
 									<table>
 										<tr>
@@ -63,7 +63,7 @@
 										</tr>
 										<tr>
 											<td>
-												<div th:text="${comment.comt}" class="card-header" style="background-color: rgb(237, 235, 233); border-radius: 8px; height:fit-content; width:fit-content ; text-align: right; margin-top: 8px;"></div>
+												<div th:text="${comment.comt}" class="card-header" style="background-color: rgb(237, 235, 233); border-radius: 8px; height:fit-content; width:fit-content ; text-align: right; margin-top: 8px; "></div>
 											</td>
 										</tr>
 									</table>
